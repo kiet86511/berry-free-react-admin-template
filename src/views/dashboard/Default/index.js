@@ -1,59 +1,42 @@
-import { useEffect, useState } from 'react';
+import { Typography } from '@mui/material';
+import React from 'react';
 
-// material-ui
-import { Grid } from '@mui/material';
+import Img1 from '../../../img/banner-1.jpg';
+import Img2 from '../../../img/banner-2.jpg';
+import Img3 from '../../../img/banner-3.jpg';
 
-// project imports
-import EarningCard from './EarningCard';
-import PopularCard from './PopularCard';
-import TotalOrderLineChartCard from './TotalOrderLineChartCard';
-import TotalIncomeDarkCard from './TotalIncomeDarkCard';
-import TotalIncomeLightCard from './TotalIncomeLightCard';
-import TotalGrowthBarChart from './TotalGrowthBarChart';
-import { gridSpacing } from 'store/constant';
-
-// ==============================|| DEFAULT DASHBOARD ||============================== //
-
-const Dashboard = () => {
-    const [isLoading, setLoading] = useState(true);
-    useEffect(() => {
-        setLoading(false);
-    }, []);
-
-    return (
-        <Grid container spacing={gridSpacing}>
-            <Grid item xs={12}>
-                <Grid container spacing={gridSpacing}>
-                    <Grid item lg={4} md={6} sm={6} xs={12}>
-                        <EarningCard isLoading={isLoading} />
-                    </Grid>
-                    <Grid item lg={4} md={6} sm={6} xs={12}>
-                        <TotalOrderLineChartCard isLoading={isLoading} />
-                    </Grid>
-                    <Grid item lg={4} md={12} sm={12} xs={12}>
-                        <Grid container spacing={gridSpacing}>
-                            <Grid item sm={6} xs={12} md={6} lg={12}>
-                                <TotalIncomeDarkCard isLoading={isLoading} />
-                            </Grid>
-                            <Grid item sm={6} xs={12} md={6} lg={12}>
-                                <TotalIncomeLightCard isLoading={isLoading} />
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid item xs={12}>
-                <Grid container spacing={gridSpacing}>
-                    <Grid item xs={12} md={8}>
-                        <TotalGrowthBarChart isLoading={isLoading} />
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <PopularCard isLoading={isLoading} />
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Grid>
-    );
-};
+const Dashboard = () => (
+    <div>
+        <Typography variant="h2" textAlign="center">
+            SEARCH AND RENT BOARDING HOUSE WEBSITE
+        </Typography>
+        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+            <ol className="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active" />
+                <li data-target="#carouselExampleIndicators" data-slide-to="1" />
+                <li data-target="#carouselExampleIndicators" data-slide-to="2" />
+            </ol>
+            <div className="carousel-inner">
+                <div className="carousel-item active">
+                    <img className="d-block w-100" src={Img1} alt="First slide" />
+                </div>
+                <div className="carousel-item">
+                    <img className="d-block w-100" src={Img2} alt="Second slide" />
+                </div>
+                <div className="carousel-item">
+                    <img className="d-block w-100" src={Img3} alt="Third slide" />
+                </div>
+            </div>
+            <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true" />
+                <span className="sr-only">Previous</span>
+            </a>
+            <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true" />
+                <span className="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+);
 
 export default Dashboard;

@@ -44,7 +44,7 @@ const MainRoutes = {
             element: <UtilsShadow />
         },
         {
-            path: '/icons/tabler-icons',
+            path: '/utils/create',
             element: <UtilsTablerIcons />
         },
         {

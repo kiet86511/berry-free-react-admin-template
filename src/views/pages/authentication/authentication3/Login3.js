@@ -8,7 +8,6 @@ import { Divider, Grid, Stack, Typography, useMediaQuery } from '@mui/material';
 import AuthWrapper1 from '../AuthWrapper1';
 import AuthCardWrapper from '../AuthCardWrapper';
 import AuthLogin from '../auth-forms/AuthLogin';
-import Logo from 'ui-component/Logo';
 import AuthFooter from 'ui-component/cards/AuthFooter';
 
 // assets
@@ -28,9 +27,18 @@ const Login = () => {
                             <AuthCardWrapper>
                                 <Grid container spacing={2} alignItems="center" justifyContent="center">
                                     <Grid item sx={{ mb: 3 }}>
-                                        <Link to="#">
-                                            <Logo />
-                                        </Link>
+                                        <Typography
+                                            sx={{
+                                                fontWeight: 'bold',
+                                                fontSize: 24,
+                                                textAlign: 'center',
+                                                color: '#fff',
+                                                textShadow: '1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue'
+                                            }}
+                                        >
+                                            Search and Rent <br />
+                                            Boarding house
+                                        </Typography>
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Grid
@@ -46,14 +54,14 @@ const Login = () => {
                                                         gutterBottom
                                                         variant={matchDownSM ? 'h3' : 'h2'}
                                                     >
-                                                        Hi, Welcome Back
+                                                        Welcome to Login page
                                                     </Typography>
                                                     <Typography
                                                         variant="caption"
                                                         fontSize="16px"
                                                         textAlign={matchDownSM ? 'center' : 'inherit'}
                                                     >
-                                                        Enter your credentials to continue
+                                                        Enter your username and password
                                                     </Typography>
                                                 </Stack>
                                             </Grid>

@@ -1,126 +1,171 @@
-import { Grid, Link } from '@mui/material';
-import MuiTypography from '@mui/material/Typography';
+import { Grid } from '@mui/material';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 // project imports
-import SubCard from 'ui-component/cards/SubCard';
-import MainCard from 'ui-component/cards/MainCard';
-import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
-import { gridSpacing } from 'store/constant';
 
 // ==============================|| TYPOGRAPHY ||============================== //
+// async function getUser() {
+//     try {
+//         const response = await axios.get('/user');
+//         console.log(response.data);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
-const Typography = () => (
-    <MainCard title="Basic Typography" secondary={<SecondaryAction link="https://next.material-ui.com/system/typography/" />}>
-        <Grid container spacing={gridSpacing}>
-            <Grid item xs={12} sm={6}>
-                <SubCard title="Heading">
-                    <Grid container direction="column" spacing={1}>
-                        <Grid item>
-                            <MuiTypography variant="h1" gutterBottom>
-                                h1. Heading
-                            </MuiTypography>
-                        </Grid>
-                        <Grid item>
-                            <MuiTypography variant="h2" gutterBottom>
-                                h2. Heading
-                            </MuiTypography>
-                        </Grid>
-                        <Grid item>
-                            <MuiTypography variant="h3" gutterBottom>
-                                h3. Heading
-                            </MuiTypography>
-                        </Grid>
-                        <Grid item>
-                            <MuiTypography variant="h4" gutterBottom>
-                                h4. Heading
-                            </MuiTypography>
-                        </Grid>
-                        <Grid item>
-                            <MuiTypography variant="h5" gutterBottom>
-                                h5. Heading
-                            </MuiTypography>
-                        </Grid>
-                        <Grid item>
-                            <MuiTypography variant="h6" gutterBottom>
-                                h6. Heading
-                            </MuiTypography>
-                        </Grid>
-                    </Grid>
-                </SubCard>
+const Typography = () => {
+    const [address, setAddress] = useState([]);
+
+    useEffect(() => {
+        axios.get(`https://provinces.open-api.vn/api/?depth=3`).then((res) => {
+            setAddress(res.data);
+        });
+    }, []);
+
+    const wards = [
+        'Vĩnh Trung',
+        'Tân Chính',
+        'Thạc Gián',
+        'Chính Gián',
+        'Tam Thuận',
+        'Xuân Hà',
+        'An Khê',
+        'Hoà Khê',
+        'Thanh Khê Đông',
+        'Thanh Khê Tây'
+    ];
+    const districts = [
+        'Quận Hải Châu',
+        'Quận Cẩm Lệ',
+        'Quận Thanh Khê',
+        'Quận Liên Chiểu',
+        'Quận Ngũ Hành Sơn',
+        'Quận Sơn Trà',
+        'Huyện Hòa Vang',
+        'Huyện Hoàng Sa'
+    ];
+    const citys = address.map((item) => item.name);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
+
+    return (
+        <Grid container spacing={2}>
+            <Grid item xs={3} />
+            <Grid item xs={5}>
+                <p style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}>My Post</p>
+                <hr />
+                <form>
+                    <div className="form-group row">
+                        <span style={{ fontWeight: 'bold' }} className="col-sm-3 col-form-label">
+                            Title
+                        </span>
+                        <div className="col-sm-9">
+                            <input type="text" name="title" id="title" className="form-control" placeholder="Enter title" />
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <span style={{ fontWeight: 'bold' }} className="col-sm-3 col-form-label">
+                            Area
+                        </span>
+                        <div className="col-sm-5">
+                            <input type="number" id="area" name="area" className="form-control" placeholder="Enter number of meter" />
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <span style={{ fontWeight: 'bold' }} className="col-sm-3 col-form-label">
+                            Number person
+                        </span>
+                        <div className="col-sm-5">
+                            <input
+                                type="number"
+                                name="n_person"
+                                id="n_person"
+                                className="form-control"
+                                placeholder="Enter number of person"
+                            />
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <span style={{ fontWeight: 'bold' }} className="col-sm-3 col-form-label">
+                            Price
+                        </span>
+                        <div className="col-sm-5">
+                            <input type="number" id="price" name="price" className="form-control" placeholder="Enter price" />
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <span style={{ fontWeight: 'bold' }} className="col-sm-3 col-form-label">
+                            City
+                        </span>
+                        <div className="col-sm-6">
+                            <select name="city" className="custom-select custom-select-lg mb-3">
+                                {citys.map((item) => (
+                                    <option value={item}>{item}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <span style={{ fontWeight: 'bold' }} className="col-sm-3 col-form-label">
+                            District
+                        </span>
+                        <div className="col-sm-6">
+                            <select name="district" className="custom-select custom-select-lg mb-3">
+                                {districts.map((item) => (
+                                    <option value={item}>{item}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <span style={{ fontWeight: 'bold' }} className="col-sm-3 col-form-label">
+                            Ward
+                        </span>
+                        <div className="col-sm-6">
+                            <select name="ward" className="custom-select custom-select-lg mb-3">
+                                {wards.map((item) => (
+                                    <option value={item}>{item}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <span style={{ fontWeight: 'bold' }} className="col-sm-3 col-form-label">
+                            Phone
+                        </span>
+                        <div className="col-sm-5">
+                            <input type="text" name="phone" className="form-control" placeholder="Your phone number" />
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <span style={{ fontWeight: 'bold' }} className="col-sm-3 col-form-label">
+                            More Information
+                        </span>
+                        <div className="col-sm-9">
+                            <textarea className="form-control" id="desccription" name="desccription" rows="3" />
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <span style={{ fontWeight: 'bold' }} className="col-sm-3 col-form-label">
+                            Attach image
+                        </span>
+                        <div className="col-sm-9">
+                            <input type="file" id="img" name="img" className="form-control" />
+                        </div>
+                    </div>
+                    <div style={{ textAlign: 'center' }}>
+                        <button className="btn btn-primary" type="submit">
+                            POST
+                        </button>
+                    </div>
+                </form>
             </Grid>
-            <Grid item xs={12} sm={6}>
-                <SubCard title="Sub title">
-                    <Grid container direction="column" spacing={1}>
-                        <Grid item>
-                            <MuiTypography variant="subtitle1" gutterBottom>
-                                subtitle1. Lorem ipsum dolor sit connecter adieu siccing eliot. Quos blanditiis tenetur
-                            </MuiTypography>
-                        </Grid>
-                        <Grid item>
-                            <MuiTypography variant="subtitle2" gutterBottom>
-                                subtitle2. Lorem ipsum dolor sit connecter adieu siccing eliot. Quos blanditiis tenetur
-                            </MuiTypography>
-                        </Grid>
-                    </Grid>
-                </SubCard>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <SubCard title="Body">
-                    <Grid container direction="column" spacing={1}>
-                        <Grid item>
-                            <MuiTypography variant="body1" gutterBottom>
-                                body1. Lorem ipsum dolor sit connecter adieu siccing eliot. Quos blanditiis tenetur unde suscipit, quam
-                                beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti?
-                                Eum quasi quidem quibusdam.
-                            </MuiTypography>
-                        </Grid>
-                        <Grid item>
-                            <MuiTypography variant="body2" gutterBottom>
-                                body2. Lorem ipsum dolor sit connecter adieu siccing eliot. Quos blanditiis tenetur unde suscipit, quam
-                                beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti?
-                                Eum quasi quidem quibusdam.
-                            </MuiTypography>
-                        </Grid>
-                    </Grid>
-                </SubCard>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <SubCard title="Extra">
-                    <Grid container direction="column" spacing={1}>
-                        <Grid item>
-                            <MuiTypography variant="button" display="block" gutterBottom>
-                                button text
-                            </MuiTypography>
-                        </Grid>
-                        <Grid item>
-                            <MuiTypography variant="caption" display="block" gutterBottom>
-                                caption text
-                            </MuiTypography>
-                        </Grid>
-                        <Grid item>
-                            <MuiTypography variant="overline" display="block" gutterBottom>
-                                overline text
-                            </MuiTypography>
-                        </Grid>
-                        <Grid item>
-                            <MuiTypography
-                                variant="body2"
-                                color="primary"
-                                component={Link}
-                                href="https://berrydashboard.io"
-                                target="_blank"
-                                display="block"
-                                underline="hover"
-                                gutterBottom
-                            >
-                                https://berrydashboard.io
-                            </MuiTypography>
-                        </Grid>
-                    </Grid>
-                </SubCard>
-            </Grid>
+            <Grid item xs={4} />
         </Grid>
-    </MainCard>
-);
+    );
+};
 
 export default Typography;

@@ -77,7 +77,7 @@ const FirebaseLogin = ({ ...others }) => {
                             <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }}>
                                 <img src={Google} alt="google" width={16} height={16} style={{ marginRight: matchDownSM ? 8 : 16 }} />
                             </Box>
-                            Sign in with Google
+                            Login with Google
                         </Button>
                     </AnimateButton>
                 </Grid>
@@ -120,8 +120,8 @@ const FirebaseLogin = ({ ...others }) => {
 
             <Formik
                 initialValues={{
-                    email: 'info@codedthemes.com',
-                    password: '123456',
+                    email: 'kiet8511@gmail.com',
+                    password: '19454',
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
@@ -225,15 +225,14 @@ const FirebaseLogin = ({ ...others }) => {
                         <Box sx={{ mt: 2 }}>
                             <AnimateButton>
                                 <Button
-                                    disableElevation
-                                    disabled={isSubmitting}
+                                    href="http://localhost:3001"
                                     fullWidth
                                     size="large"
                                     type="submit"
                                     variant="contained"
                                     color="secondary"
                                 >
-                                    Sign in
+                                    Login
                                 </Button>
                             </AnimateButton>
                         </Box>

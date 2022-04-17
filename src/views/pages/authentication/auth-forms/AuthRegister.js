@@ -90,7 +90,7 @@ const FirebaseRegister = ({ ...others }) => {
                             <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }}>
                                 <img src={Google} alt="google" width={16} height={16} style={{ marginRight: matchDownSM ? 8 : 16 }} />
                             </Box>
-                            Sign up with Google
+                            Register with Google
                         </Button>
                     </AnimateButton>
                 </Grid>
@@ -119,7 +119,7 @@ const FirebaseRegister = ({ ...others }) => {
                 </Grid>
                 <Grid item xs={12} container alignItems="center" justifyContent="center">
                     <Box sx={{ mb: 2 }}>
-                        <Typography variant="subtitle1">Sign up with Email address</Typography>
+                        <Typography variant="subtitle1">Register with Email address</Typography>
                     </Box>
                 </Grid>
             </Grid>
@@ -292,7 +292,7 @@ const FirebaseRegister = ({ ...others }) => {
                                     variant="contained"
                                     color="secondary"
                                 >
-                                    Sign up
+                                    Register
                                 </Button>
                             </AnimateButton>
                         </Box>
